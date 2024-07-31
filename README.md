@@ -14,7 +14,7 @@ That's Haikus aim, to add a fully featured UI library 1:1 with ImGui, while stil
 ```lua
 local Haiku = require(...) or loadstring(...)
 
-Haiku:CreatContext()
+Haiku:CreateContext()
 
 local function App()
     Haiku:NewFrame()
