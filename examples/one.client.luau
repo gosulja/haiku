@@ -1,25 +1,21 @@
-local RepStorage = game:GetService("ReplicatedStorage")
+local Haiku = require(game:GetService("ReplicatedStorage").Haiku)
 
-local Haiku = require(RepStorage.Haiku)
+Haiku:CreateContext()
 
-local Context = Haiku:CreateContext()
-Haiku:SetContext(Context)
+local function app()
+    Haiku:NewFrame()
+    
+    Haiku:Begin("My window", 90, 100)
 
-local function render() 
-    Haiku:BeginFrame()
-
-    do 
-        Haiku:BeginWindow("My Window", 100, 100, 300, 200)
-
-        if Haiku:Button("Click me!") then 
-            print("Button was clicked!")
-        end
-
-        Haiku:EndWindow()
+    if Haiku:Button("Click me!") then
+        print("hello!")
     end
 
-    Haiku:EndFrame()
+    if Haiku:Button("Click me please!") then
+        print("hello button!")
+    end
+
+    Haiku:End()
 end
 
-while task.wait(0.1) do render() end
-
+Haiku:Render(app)
