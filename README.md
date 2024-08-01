@@ -38,5 +38,7 @@ Haiku:Render(App)
 Looks very similar to ImGui right? That's what Haiku is.
 
 Some parts of the interface are reactive to the default style, which is what you're seeing here, everything updates in real time.
-![image](https://github.com/user-attachments/assets/5d340c40-5d46-4666-a45b-5933a9f7339a)
 
+Rounding, old.                                                                           |  No rounding, new.
+:---------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------:
+![image](https://github.com/user-attachments/assets/5d340c40-5d46-4666-a45b-5933a9f7339a)| ![image](https://github.com/user-attachments/assets/11a4cfe7-e259-4a82-bde2-c8ff753d7d4c)
