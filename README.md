@@ -88,9 +88,10 @@ I apologize for the misunderstanding. Here's a markdown list of checkboxes repre
 - [ ] Tooltips
 - [ ] Menus and context menus
 - [ ] Keyboard navigation
-- [ ] Font support (including TTF loading)
+- [x] Font support (including TTF loading)
 - [ ] Unicode support
 
-Rounding, old.                                                                           |  No rounding, new.
-:---------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------:
-![image](https://github.com/user-attachments/assets/5d340c40-5d46-4666-a45b-5933a9f7339a)| ![image](https://github.com/user-attachments/assets/11a4cfe7-e259-4a82-bde2-c8ff753d7d4c)
+Rounding, old.                                                                           |  No rounding, new.                                                                      | Custom font, new.
+:---------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------:|:------------------------------:
+![image](https://github.com/user-attachments/assets/5d340c40-5d46-4666-a45b-5933a9f7339a)| ![image](https://github.com/user-attachments/assets/11a4cfe7-e259-4a82-bde2-c8ff753d7d4c)|![image](https://github.com/user-attachments/assets/6a9429c1-5d14-4d64-88e1-851d7522e16a)
+
