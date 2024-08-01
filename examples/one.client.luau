@@ -2,20 +2,26 @@ local Haiku = require(game:GetService("ReplicatedStorage").Haiku)
 
 Haiku:CreateContext()
 
-local function app()
+local function App()
     Haiku:NewFrame()
-    
-    Haiku:Begin("My window", 90, 100)
 
-    if Haiku:Button("Click me!") then
-        print("hello!")
-    end
+    Haiku:Begin("Hello, world!") -- title, x, y, width, height
 
-    if Haiku:Button("Click me please!") then
-        print("hello button!")
+    do
+        Haiku:Label("hewo :3")
+
+        if Haiku:Button("Click me!") then
+            print("You clicked me")
+        end
+
+        if Haiku:Button("Click me please :3") then
+            print(":3")
+        end
     end
 
     Haiku:End()
 end
 
-Haiku:Render(app)
+Haiku:Render(App)
+
+

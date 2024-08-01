@@ -48,18 +48,17 @@
 
 local types = require(script.types)
 local elements = require(script.elements)
+local state = require(script.state)
 
 local Haiku = { }
 
-local CURRENT_CTX: types.Context = nil
-
 function Haiku:CreateContext()
-    if CURRENT_CTX then
+    if state.get("CURRENT_CTX") then
         warn("Haiku context has already been created.")
         return
     end
 
-    CURRENT_CTX = {
+    state.set("CURRENT_CTX", {
         window_stack = {},
         current_window = nil,
         used_instances = {},
@@ -73,15 +72,21 @@ function Haiku:CreateContext()
         line_height = nil,
         same_line = nil,
         last_item_width = 0,
-    }
+    })
 
-    elements.init(CURRENT_CTX)
+    elements.init(state.get("CURRENT_CTX"))
     elements:CreateView()
 end
 
 function Haiku:NewFrame()
-    CURRENT_CTX.window_stack = {}
-    CURRENT_CTX.next_item_pos = Vector2.new(0, 0)
+    state.update("CURRENT_CTX", function(ctx)
+        for _, window in ipairs(ctx.window_stack) do
+            window.completed = false
+        end
+
+        ctx.next_item_pos = Vector2.new(0, 0)
+        return ctx
+    end)
 end
 
 function Haiku:Begin(title: string, x: number?, y: number?, width: number?, height: number?)
@@ -92,8 +97,16 @@ function Haiku:SameLine()
     return elements:SameLine()
 end
 
+function Haiku:Label(label: string)
+    return elements:Label(label)
+end
+
 function Haiku:Button(label: string)
     return elements:Button(label)
+end
+
+function Haiku:CheckBox(label: string, default: boolean?)
+    return elements:CheckBox(label, default)
 end
 
 function Haiku:End()
@@ -102,9 +115,18 @@ end
 
 function Haiku:Render(app)
     local function render()
-        CURRENT_CTX.run_render = true
+        state.update("CURRENT_CTX", function(ctx)
+            ctx.run_render = true
+            return ctx
+        end)
+
         app()
-        CURRENT_CTX.run_render = false
+
+        state.update("CURRENT_CTX", function(ctx)
+            ctx.run_render = true
+            return ctx
+        end)
+
         elements:EndFrame()
     end
     

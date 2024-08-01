@@ -15,7 +15,19 @@ export type Window = {
     padding: Vector2,
     isOpen: boolean,
     isDragging: boolean,
+    isCollapsed: boolean,
+    completed: boolean,
     zIndex: number,
+    noTitlebar: boolean,
+    noScrollbar: boolean,
+    noMenu: boolean,
+    noMove: boolean,
+    noResize: boolean,
+    noCollapse: boolean,
+    noClose: boolean,
+    noNav: boolean,
+    noBackground: boolean,
+    noBringToFront: boolean,
 }
 
 export type HaikuElement = {
